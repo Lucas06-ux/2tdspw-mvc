@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Cadastro de livro</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" >
 </head>
 <body>
 <form method="post" th:action="@{/livros/cadastrar}" th:object="${livro}"></form>
@@ -11,9 +12,11 @@
 <br>
 <div>
   <label for = "titulo" > Titulo:</label> <input type="text" id="titulo" th:field="*{titulo}">
+    <p th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}" th:errorClass="error"></p>
 </div>
 <div>
   <label for="autor"> Autor</label> <input type="text" id="autor" th:field="*{autor}">
+    <p th:if="${#fields.hasErrors('autor')}" th:errors="*{autor}" th:errorClass="error"></p>
 </div>
 <div>
   <label for="genero"> Gênero</label>
@@ -21,6 +24,7 @@
     <option value=" " disabled selected> Selecione...</option>
     <option th:each="gen : ${generos}" th:value="${gen}" th:text="${gen.descricao}"></option>
   </select>
+    <p th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}" th:errorClass="error"></p>
 </div>
 <div>
   <label for="paginas"> Páginas</label> <input type="text" id="paginas" th:field="*{paginas}">
@@ -30,6 +34,7 @@
 </div>
 <div>
     <label for="isbn"> ISBN</label> <input type="text" id="isbn" th:field="*{isbn}">
+    <p th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}" th:errorClass="error"></p>
 </div>
 <div>
   <label for="dataPublicacao"> Data de Publicação</label> <input type="text" id="dataPublicacao" th:field="*{dataPublicacao}">
@@ -40,5 +45,6 @@
 <div>
   <button type="submit">Salvar</button>
 </div>
+<div th:insert="~{fragments/footer :: rodape}"></div>
 </body>
 </html>

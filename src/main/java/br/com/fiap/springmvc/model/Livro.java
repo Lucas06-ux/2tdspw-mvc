@@ -25,7 +25,7 @@ public class Livro {
     private Genero genero;
     private Integer paginas;
     private String editora;
-    @Pattern(regexp = "^970\\d{7}$|^970\\d{10}$") //ISBN 10 ou 13 iniciado em 970
+    @Pattern(regexp = "^970\\d{7}$|^970\\d{10}$", message = "ISBN em formato inválido!") //ISBN 10 ou 13 iniciado em 970
     private String isbn;
     private LocalDate dataPublicacao;
     private BigDecimal preco;
